@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  /* Overwrite brand palettes to use Gallery White & Dark Slate contrasts */
+  --color-brand-50: #F9F8F6;  /* Gallery White core background */
+  --color-brand-100: #F5F2EB; /* Soft alabaster overlay */
+  --color-brand-200: #EBE8E0; /* Light line boundary */
+  --color-brand-300: #D8D4C9; /* Medium line weight */
+  --color-brand-400: #B9B4A3; /* Muted label text */
+  --color-brand-500: #8C8673; /* Antique gold-bronze dust */
+  --color-brand-600: #6F6959; /* Medium bronze text */
+  --color-brand-700: #5C5648; /* Dark bronze text */
+  --color-brand-800: #2C2F33; /* Dark Slate secondary line/background */
+  --color-brand-900: #16181B; /* Dark Slate core background/text */
+  --color-brand-950: #0D0E10; /* Deepest ink black */
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Delicate gold/bronze shimmer */
+  .text-luxury-gold {
+    background: linear-gradient(135deg, #c5a880 0%, #a3855a 50%, #c5a880 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .border-luxury-gold {
+    border-image: linear-gradient(135deg, #c5a880 0%, #a3855a 100%) 1;
+  }
+}
+
+/* Base style adjustments */
+body {
+  font-family: var(--font-sans);
+  background-color: #F9F8F6; /* Gallery White Base */
+  color: #16181B; /* Dark Slate Core */
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F9F8F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #EBE8E0;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D8D4C9;
+}
+
+/* Print CSS Stylesheet */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+  }
+  
+  /* Hide interactive-only UI elements when printing */
+  .no-print,
+  button,
+  nav,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Render inputs and textareas as elegant, static borderless text when printing */
+  input,
+  textarea,
+  select {
+    border: none !important;
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    resize: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    color: #1C1A17 !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    font-family: inherit !important;
+    line-height: inherit !important;
+  }
+
+  /* Make sure select arrows don't render on print */
+  select {
+    background-image: none !important;
+  }
+
+  /* Force print area to cover full width */
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* Page break rules */
+  .print-page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Keep border colors and backgrounds visible in PDF */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

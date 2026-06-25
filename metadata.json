@@ -1,0 +1,6 @@
+{
+  "name": "AI Interior Design Proposal Studio",
+  "description": "An interactive collaborative platform for interior designers and clients to co-create, visualize, and generate comprehensive home decoration proposals using Gemini-powered requirement Q&As, layout planning, spatial renderings, budgets, and PDF output.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
